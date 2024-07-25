@@ -1,0 +1,25 @@
+#tasks {
+  .table-tasks {
+    .head-column {
+      display: flex;
+      flex-direction: column;
+      .head-column_input {
+        width: 150px;
+      }
+      .head-column_button {
+        width: 156px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        font-size: 15px;
+      }
+    }
+    .actions Button {
+      margin: 2px 8px 0 0;
+    }
+    .check-box-group {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
