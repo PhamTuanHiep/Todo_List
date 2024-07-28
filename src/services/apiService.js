@@ -1,8 +1,9 @@
 import axios from "axios";
-const getAllUsers = () => {
-  return axios.get("http://localhost:3001/users");
+import { USERS_PATH, TASKS_PATH } from "./constant";
+const getAllUsers = async () => {
+  return await axios.get(USERS_PATH);
 };
-const postNewUser = (username, password, email, phone, image) => {
+const postNewUser = async (username, password, email, phone, image) => {
   const data = {
     username,
     password,
@@ -10,34 +11,34 @@ const postNewUser = (username, password, email, phone, image) => {
     phone,
     image,
   };
-  return axios.post("http://localhost:3001/users", data);
+  return await axios.post(USERS_PATH, data);
 };
-const patchUser = ({ id, ...rest }) => {
+const patchUser = async ({ id, ...rest }) => {
   // const data = {
   //   username,
   //   email,
   //   phone,
   //   image,
   // };
-  return axios.patch(`http://localhost:3001/users/${id}`, rest);
+  return await axios.patch(`${USERS_PATH}${id}`, rest);
 };
-const deleteUser = (id) => {
-  return axios.delete(`http://localhost:3001/users/${id}`);
+const deleteUser = async (id) => {
+  return await axios.delete(`${USERS_PATH}${id}`);
 };
 const patchPassUser = ({ id, ...rest }) => {
-  return axios.patch(`http://localhost:3001/users/${id}`, rest);
+  return axios.patch(`${USERS_PATH}${id}`, rest);
 };
 const getUserTasks = (id) => {
-  return axios.get(`http://localhost:3001/tasks/?userId=${id}`);
+  return axios.get(`${TASKS_PATH}?userId=${id}`);
 };
 const patchTask = ({ id, ...rest }) => {
-  return axios.patch(`http://localhost:3001/tasks/${id}`, rest);
+  return axios.patch(`${TASKS_PATH}${id}`, rest);
 };
 const postTask = ({ ...rest }) => {
-  return axios.post("http://localhost:3001/tasks", rest);
+  return axios.post(TASKS_PATH, rest);
 };
 const deleteTask = (id) => {
-  return axios.delete(`http://localhost:3001/tasks/${id}`);
+  return axios.delete(`${TASKS_PATH}${id}`);
 };
 export {
   getAllUsers,

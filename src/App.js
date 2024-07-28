@@ -3,41 +3,39 @@ import { Outlet } from "react-router-dom";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import axios from "axios";
-import videoHomepage from "./assets/videos/video-homepage.mp4";
 import videoApp from "./assets/videos/backgroundvideo.mp4";
 import "./App.scss";
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyD7HhfAK-JfPcYoTvgFszo6Qag_CUIc9k4",
+  authDomain: "todo-list-fcdb9.firebaseapp.com",
+  projectId: "todo-list-fcdb9",
+  storageBucket: "todo-list-fcdb9.appspot.com",
+  messagingSenderId: "972952153966",
+  appId: "1:972952153966:web:46481c21f085e3bf3b9b7f",
+  measurementId: "G-TJRVV3FETV",
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
 const App = () => {
   console.log(theme.useToken().token.colorBgContainer);
   const { Content, Footer } = Layout;
-  // const getData = async () => {
-  //   try {
-  //     let data = await axios.get("http://localhost:3001/users");
-  //     return data;
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // };
-  // getData().then((data) => {
-  //   console.log("data", data);
-  // });
-  // const postData = async () => {
-  //   try {
-  //     let data = await axios.post("http://localhost:3001/users", {
-  //       username: "Thuong",
-  //       password: "12345",
-  //       email: "user4@gmail.com",
-  //       phone: "0123456782",
-  //       taskId: 2,
-  //     });
-  //     return data;
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // };
-  // postData().then((data) => {
-  //   console.log(data);
-  // });
+  const getUsers = async () => {
+    const Us = await axios.get("https://todo-list-51ie.onrender.com/users");
+    console.log("Us:", Us);
+  };
+  getUsers();
 
   return (
     <>
